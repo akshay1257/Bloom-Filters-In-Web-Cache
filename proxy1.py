@@ -138,6 +138,7 @@ def port_close():
     server_address = ('localhost', 9000)
     sock_close.connect(server_address)
     
+
 # method to add filters to dictionary
 def add_filter(connection, client_address):
     global filter_dict
@@ -148,32 +149,6 @@ def add_filter(connection, client_address):
     connection.close()
 
 
-##method to run servers
-def run_servers(): 
-    global filter_dict
-    global server
-    global sock
-        
-    ##check backup file
-    if os.path.isfile("backup.pickle"):
-        print "loading filters from backup....\n"
-        filter_dict = load_backup("backup.pickle")
-        print "backup contents: ",filter_dict,"\n"
-        
-    ##run tcp server
-    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    server_address = ('', 9000)
-    sock.bind(server_address)
-    sock.listen(5)
-    print "port opened on 9000...\n"
-        
-    ##spawn a new thread to listen in a loop
-    thread_run_port = Thread(target = run_port, args = (sock,filter_dict))
-    thread_run_port.start()
-        
-    ##run http server
-    print "running http server on port 8080...\n "
-    server.serve_forever()
 
 
 
