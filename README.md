@@ -11,7 +11,7 @@ To show how a bloom filter helps in reducing network usage, We would setup exper
 
 
 1. Git clone the code on all the proxy server. 
-	$ git clone https://github.com/Pankajchandan/summaryCache.git
+	$ git clone https://github.com/akshay1257/Bloom-Filters-In-Web-Cache.git
 
 2. List all the participating host’s ip address in proxy_list.txt including localhost.
 
